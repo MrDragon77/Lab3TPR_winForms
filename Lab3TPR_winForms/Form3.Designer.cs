@@ -37,19 +37,21 @@
             dataGridView_results.AllowUserToAddRows = false;
             dataGridView_results.AllowUserToDeleteRows = false;
             dataGridView_results.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_results.Location = new Point(29, 23);
+            dataGridView_results.Location = new Point(25, 17);
+            dataGridView_results.Margin = new Padding(3, 2, 3, 2);
             dataGridView_results.Name = "dataGridView_results";
             dataGridView_results.RowHeadersWidth = 51;
             dataGridView_results.RowTemplate.Height = 29;
-            dataGridView_results.Size = new Size(753, 351);
+            dataGridView_results.Size = new Size(659, 263);
             dataGridView_results.TabIndex = 2;
             // 
             // Form3
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(981, 641);
+            ClientSize = new Size(855, 473);
             Controls.Add(dataGridView_results);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form3";
             Text = "Результаты моделирования";
             Load += Form3_Load;

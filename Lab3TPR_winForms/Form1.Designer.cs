@@ -75,7 +75,6 @@
             label2.Size = new Size(179, 15);
             label2.TabIndex = 3;
             label2.Text = "Количество стратегий 2 игрока";
-            label2.Visible = false;
             // 
             // label3
             // 
@@ -146,7 +145,6 @@
             nud_strategyNum2.Size = new Size(85, 23);
             nud_strategyNum2.TabIndex = 12;
             nud_strategyNum2.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            nud_strategyNum2.Visible = false;
             // 
             // nud_strategyNum1
             // 
@@ -160,7 +158,7 @@
             // 
             // button_EditForm4
             // 
-            button_EditForm4.Location = new Point(133, 372);
+            button_EditForm4.Location = new Point(12, 391);
             button_EditForm4.Margin = new Padding(3, 2, 3, 2);
             button_EditForm4.Name = "button_EditForm4";
             button_EditForm4.Size = new Size(257, 35);

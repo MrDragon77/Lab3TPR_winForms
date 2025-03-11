@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Lab3TPR_winForms
 {
+    //НЕ ИСПОЛЬЗУЕТСЯ В 3 ЛАБЕ
     //Form4 - форма для ввода сложных параметров
     //конкретно в этой вводятся связи между состояниями в две таблицы
     public partial class Form4 : Form
@@ -30,14 +31,14 @@ namespace Lab3TPR_winForms
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            dataGridView_table_S_IP.DataSource = datasetTemp.Tables[tablesNames.table_S_IP + "1"];
-            dataGridView_table_S_PK.DataSource = datasetTemp.Tables[tablesNames.table_S_PK + "1"];
+            //dataGridView_table_S_IP.DataSource = datasetTemp.Tables[tablesNames.table_S_IP + "1"];
+            //dataGridView_table_S_PK.DataSource = datasetTemp.Tables[tablesNames.table_S_PK + "1"];
         }
 
         private void numericUpDown_tableID_ValueChanged(object sender, EventArgs e)
         {
-            dataGridView_table_S_IP.DataSource = datasetTemp.Tables[tablesNames.table_S_IP + numericUpDown_tableID.Value.ToString()];
-            dataGridView_table_S_PK.DataSource = datasetTemp.Tables[tablesNames.table_S_PK + numericUpDown_tableID.Value.ToString()];
+            //dataGridView_table_S_IP.DataSource = datasetTemp.Tables[tablesNames.table_S_IP + numericUpDown_tableID.Value.ToString()];
+            //dataGridView_table_S_PK.DataSource = datasetTemp.Tables[tablesNames.table_S_PK + numericUpDown_tableID.Value.ToString()];
             dataGridView_table_S_IP.Update();
             dataGridView_table_S_PK.Update();
         }

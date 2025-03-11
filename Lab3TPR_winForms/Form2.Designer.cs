@@ -40,7 +40,7 @@
             // label_table_I
             // 
             label_table_I.AutoSize = true;
-            label_table_I.Location = new Point(60, 41);
+            label_table_I.Location = new Point(49, 19);
             label_table_I.Name = "label_table_I";
             label_table_I.Size = new Size(118, 15);
             label_table_I.TabIndex = 0;
@@ -48,22 +48,23 @@
             // 
             // dataGridView_PaymentMatrix
             // 
+            dataGridView_PaymentMatrix.AllowUserToAddRows = false;
             dataGridView_PaymentMatrix.AllowUserToDeleteRows = false;
             dataGridView_PaymentMatrix.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_PaymentMatrix.ColumnHeadersVisible = false;
-            dataGridView_PaymentMatrix.Location = new Point(60, 58);
+            dataGridView_PaymentMatrix.Location = new Point(49, 44);
             dataGridView_PaymentMatrix.Margin = new Padding(3, 2, 3, 2);
             dataGridView_PaymentMatrix.Name = "dataGridView_PaymentMatrix";
-            dataGridView_PaymentMatrix.RowHeadersWidth = 51;
-            dataGridView_PaymentMatrix.RowTemplate.Height = 29;
+            dataGridView_PaymentMatrix.RowHeadersVisible = false;
+            dataGridView_PaymentMatrix.RowHeadersWidth = 23;
+            dataGridView_PaymentMatrix.RowTemplate.Height = 40;
             dataGridView_PaymentMatrix.Size = new Size(659, 473);
             dataGridView_PaymentMatrix.TabIndex = 1;
-            dataGridView_PaymentMatrix.RowsAdded += dataGridView_table_I_RowsAdded;
             dataGridView_PaymentMatrix.SelectionChanged += dataGridView_table_I_SelectionChanged;
             // 
             // numericUpDown_tableID
             // 
-            numericUpDown_tableID.Location = new Point(557, 31);
+            numericUpDown_tableID.Location = new Point(546, 11);
             numericUpDown_tableID.Margin = new Padding(3, 2, 3, 2);
             numericUpDown_tableID.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown_tableID.Name = "numericUpDown_tableID";
@@ -75,7 +76,7 @@
             // 
             // button_SaveChanges
             // 
-            button_SaveChanges.Location = new Point(612, 571);
+            button_SaveChanges.Location = new Point(532, 538);
             button_SaveChanges.Margin = new Padding(3, 2, 3, 2);
             button_SaveChanges.Name = "button_SaveChanges";
             button_SaveChanges.Size = new Size(176, 22);
@@ -86,7 +87,7 @@
             // 
             // button_Graph
             // 
-            button_Graph.Location = new Point(60, 580);
+            button_Graph.Location = new Point(49, 538);
             button_Graph.Margin = new Padding(3, 2, 3, 2);
             button_Graph.Name = "button_Graph";
             button_Graph.Size = new Size(176, 22);
@@ -100,7 +101,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(989, 938);
+            ClientSize = new Size(887, 606);
             Controls.Add(button_Graph);
             Controls.Add(button_SaveChanges);
             Controls.Add(numericUpDown_tableID);

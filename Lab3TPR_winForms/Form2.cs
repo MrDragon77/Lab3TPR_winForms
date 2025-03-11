@@ -31,19 +31,17 @@ namespace Lab3TPR_winForms
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            dataGridView_PaymentMatrix.DataSource = datasetTemp.Tables[tablesNames.paymentMatrix + "1"];
-            dataGridView_table_P.DataSource = datasetTemp.Tables[tablesNames.table_P + "1"];
-            dataGridView_table_K.DataSource = datasetTemp.Tables[tablesNames.table_K + "1"];
+            dataGridView_PaymentMatrix.DataSource = datasetTemp.Tables[tablesNames.paymentMatrix];
+            foreach (DataGridViewColumn column in dataGridView_PaymentMatrix.Columns)
+            {
+                column.Width = 40; // Установка ширины для каждого столбца
+            }
         }
 
         private void numericUpDown_tableID_ValueChanged(object sender, EventArgs e)
         {
-            dataGridView_PaymentMatrix.DataSource = datasetTemp.Tables[tablesNames.paymentMatrix + numericUpDown_tableID.Value.ToString()];
-            dataGridView_table_P.DataSource = datasetTemp.Tables[tablesNames.table_P + numericUpDown_tableID.Value.ToString()];
-            dataGridView_table_K.DataSource = datasetTemp.Tables[tablesNames.table_K + numericUpDown_tableID.Value.ToString()];
+            dataGridView_PaymentMatrix.DataSource = datasetTemp.Tables[tablesNames.paymentMatrix];
             dataGridView_PaymentMatrix.Update();
-            dataGridView_table_P.Update();
-            dataGridView_table_K.Update();
         }
 
         private void button_SaveChanges_Click(object sender, EventArgs e)
@@ -57,47 +55,12 @@ namespace Lab3TPR_winForms
             dataGridView_PaymentMatrix.Update();
         }
 
-        private void dataGridView_table_P_SelectionChanged(object sender, EventArgs e)
-        {
-            dataGridView_table_P.Update();
-        }
-
-        private void dataGridView_table_K_SelectionChanged(object sender, EventArgs e)
-        {
-            dataGridView_table_K.Update();
-        }
-
-
         private void button_Graph_Click(object sender, EventArgs e)
         {
 
             //Application.Run(new MainForm(datasetTemp.Tables["s" + numericUpDown_tableID.Value.ToString()]));
             MainForm GraphForm = new MainForm(datasetTemp.Tables["s" + numericUpDown_tableID.Value.ToString()]);
             GraphForm.ShowDialog();
-        }
-
-        private void dataGridView_table_I_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            for (int i = 0; i < dataGridView_PaymentMatrix.Rows.Count; i++)
-            {
-                dataGridView_PaymentMatrix.Rows[i].HeaderCell.Value = "И" + (i + 1).ToString();
-            }
-        }
-
-        private void dataGridView_table_P_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            for (int i = 0; i < dataGridView_table_P.Rows.Count; i++)
-            {
-                dataGridView_table_P.Rows[i].HeaderCell.Value = "П" + (i + 1).ToString();
-            }
-        }
-
-        private void dataGridView_table_K_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            for (int i = 0; i < dataGridView_table_K.Rows.Count; i++)
-            {
-                dataGridView_table_K.Rows[i].HeaderCell.Value = "К" + (i + 1).ToString();
-            }
         }
     }
 }
