@@ -31,17 +31,17 @@ namespace Lab3TPR_winForms
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            dataGridView_table_I.DataSource = datasetTemp.Tables[tablesNames.table_I + "1"];
+            dataGridView_PaymentMatrix.DataSource = datasetTemp.Tables[tablesNames.paymentMatrix + "1"];
             dataGridView_table_P.DataSource = datasetTemp.Tables[tablesNames.table_P + "1"];
             dataGridView_table_K.DataSource = datasetTemp.Tables[tablesNames.table_K + "1"];
         }
 
         private void numericUpDown_tableID_ValueChanged(object sender, EventArgs e)
         {
-            dataGridView_table_I.DataSource = datasetTemp.Tables[tablesNames.table_I + numericUpDown_tableID.Value.ToString()];
+            dataGridView_PaymentMatrix.DataSource = datasetTemp.Tables[tablesNames.paymentMatrix + numericUpDown_tableID.Value.ToString()];
             dataGridView_table_P.DataSource = datasetTemp.Tables[tablesNames.table_P + numericUpDown_tableID.Value.ToString()];
             dataGridView_table_K.DataSource = datasetTemp.Tables[tablesNames.table_K + numericUpDown_tableID.Value.ToString()];
-            dataGridView_table_I.Update();
+            dataGridView_PaymentMatrix.Update();
             dataGridView_table_P.Update();
             dataGridView_table_K.Update();
         }
@@ -54,7 +54,7 @@ namespace Lab3TPR_winForms
 
         private void dataGridView_table_I_SelectionChanged(object sender, EventArgs e)
         {
-            dataGridView_table_I.Update();
+            dataGridView_PaymentMatrix.Update();
         }
 
         private void dataGridView_table_P_SelectionChanged(object sender, EventArgs e)
@@ -78,9 +78,9 @@ namespace Lab3TPR_winForms
 
         private void dataGridView_table_I_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            for (int i = 0; i < dataGridView_table_I.Rows.Count; i++)
+            for (int i = 0; i < dataGridView_PaymentMatrix.Rows.Count; i++)
             {
-                dataGridView_table_I.Rows[i].HeaderCell.Value = "И" + (i + 1).ToString();
+                dataGridView_PaymentMatrix.Rows[i].HeaderCell.Value = "И" + (i + 1).ToString();
             }
         }
 

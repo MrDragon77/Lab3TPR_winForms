@@ -37,14 +37,14 @@
             button_SaveToFile = new Button();
             textBox_saveName = new TextBox();
             nud_StepNum = new NumericUpDown();
-            nud_conditionNum = new NumericUpDown();
-            nud_resourceNum = new NumericUpDown();
+            nud_strategyNum2 = new NumericUpDown();
+            nud_strategyNum1 = new NumericUpDown();
             button_EditForm4 = new Button();
             label1 = new Label();
             textBox_accuracy = new TextBox();
             ((System.ComponentModel.ISupportInitialize)nud_StepNum).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nud_conditionNum).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nud_resourceNum).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_strategyNum2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_strategyNum1).BeginInit();
             SuspendLayout();
             // 
             // label_
@@ -80,7 +80,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(19, 232);
+            label3.Location = new Point(19, 238);
             label3.Name = "label3";
             label3.Size = new Size(127, 15);
             label3.TabIndex = 5;
@@ -129,7 +129,7 @@
             // 
             // nud_StepNum
             // 
-            nud_StepNum.Location = new Point(180, 230);
+            nud_StepNum.Location = new Point(180, 236);
             nud_StepNum.Margin = new Padding(3, 2, 3, 2);
             nud_StepNum.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nud_StepNum.Name = "nud_StepNum";
@@ -137,26 +137,26 @@
             nud_StepNum.TabIndex = 11;
             nud_StepNum.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // nud_conditionNum
+            // nud_strategyNum2
             // 
-            nud_conditionNum.Location = new Point(204, 69);
-            nud_conditionNum.Margin = new Padding(3, 2, 3, 2);
-            nud_conditionNum.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            nud_conditionNum.Name = "nud_conditionNum";
-            nud_conditionNum.Size = new Size(85, 23);
-            nud_conditionNum.TabIndex = 12;
-            nud_conditionNum.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            nud_conditionNum.Visible = false;
+            nud_strategyNum2.Location = new Point(204, 69);
+            nud_strategyNum2.Margin = new Padding(3, 2, 3, 2);
+            nud_strategyNum2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nud_strategyNum2.Name = "nud_strategyNum2";
+            nud_strategyNum2.Size = new Size(85, 23);
+            nud_strategyNum2.TabIndex = 12;
+            nud_strategyNum2.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            nud_strategyNum2.Visible = false;
             // 
-            // nud_resourceNum
+            // nud_strategyNum1
             // 
-            nud_resourceNum.Location = new Point(204, 34);
-            nud_resourceNum.Margin = new Padding(3, 2, 3, 2);
-            nud_resourceNum.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            nud_resourceNum.Name = "nud_resourceNum";
-            nud_resourceNum.Size = new Size(85, 23);
-            nud_resourceNum.TabIndex = 13;
-            nud_resourceNum.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            nud_strategyNum1.Location = new Point(204, 34);
+            nud_strategyNum1.Margin = new Padding(3, 2, 3, 2);
+            nud_strategyNum1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nud_strategyNum1.Name = "nud_strategyNum1";
+            nud_strategyNum1.Size = new Size(85, 23);
+            nud_strategyNum1.TabIndex = 13;
+            nud_strategyNum1.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // button_EditForm4
             // 
@@ -173,7 +173,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(19, 191);
+            label1.Location = new Point(19, 192);
             label1.Name = "label1";
             label1.Size = new Size(111, 15);
             label1.TabIndex = 15;
@@ -181,7 +181,7 @@
             // 
             // textBox_accuracy
             // 
-            textBox_accuracy.Location = new Point(180, 192);
+            textBox_accuracy.Location = new Point(180, 189);
             textBox_accuracy.Name = "textBox_accuracy";
             textBox_accuracy.Size = new Size(100, 23);
             textBox_accuracy.TabIndex = 16;
@@ -194,8 +194,8 @@
             Controls.Add(textBox_accuracy);
             Controls.Add(label1);
             Controls.Add(button_EditForm4);
-            Controls.Add(nud_resourceNum);
-            Controls.Add(nud_conditionNum);
+            Controls.Add(nud_strategyNum1);
+            Controls.Add(nud_strategyNum2);
             Controls.Add(nud_StepNum);
             Controls.Add(textBox_saveName);
             Controls.Add(button_SaveToFile);
@@ -210,8 +210,8 @@
             Text = "Ввод параметров модуляции";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)nud_StepNum).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nud_conditionNum).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nud_resourceNum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_strategyNum2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_strategyNum1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -227,8 +227,8 @@
         private Button button_SaveToFile;
         private TextBox textBox_saveName;
         private NumericUpDown nud_StepNum;
-        private NumericUpDown nud_conditionNum;
-        private NumericUpDown nud_resourceNum;
+        private NumericUpDown nud_strategyNum2;
+        private NumericUpDown nud_strategyNum1;
         private Button button_EditForm4;
         private Label label1;
         private TextBox textBox_accuracy;
