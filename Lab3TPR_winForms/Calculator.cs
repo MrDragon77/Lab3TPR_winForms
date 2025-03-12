@@ -6,6 +6,7 @@ using System.Xml;
 class Calculator
 {
     public DataSet DS;
+    public DataTable DT;
     int iterations;
 
     public Calculator(DataSet newDS, int iter)
@@ -14,9 +15,10 @@ class Calculator
         iterations = iter;
     }
 
-    public void ChangeDS(DataSet new_DS)
+    public void ChangeDS(DataSet new_Ds)
     {
-        DS = new_DS;
+        DS = new_Ds;
+        DT = DS.Tables["PM"];
     }
 
     public void ChangeIterations(int new_iters)
@@ -26,55 +28,109 @@ class Calculator
 
     public DataTable Calculate()
     {
-        int conditions = DS.Tables["s" + 1.ToString()].Rows.Count;
+        int first_st = DT.Rows.Count;
+        int second_st = DT.Columns.Count;
         DataTable results = new DataTable();
         results.Clear();
-        for (int i = 0 ; i < iterations; i++)
+
+        int M = 2 + first_st;
+        int V = 4 + first_st + second_st;
+        int jk = 1;
+        int ik = 3 + first_st;
+        for (int i = 0 ; i < first_st + second_st + 5; i++)
         {
-            results.Columns.Add((i+1).ToString());
+            if (i == 0)
+            {
+                results.Columns.Add("k");
+            }
+            if (i == 1)
+            {
+                results.Columns.Add("jk");
+            }
+            if ((i > 1 && i < 2 + first_st))
+            {
+                results.Columns.Add("g" + (i - 1).ToString());
+            }
+
+            if (i == 2 + first_st)
+            {
+                results.Columns.Add("M");
+            }
+            if (i == 3 + first_st)
+            {
+                results.Columns.Add("ik");
+            }
+            if (i > 3 + first_st && i < 4 + first_st + second_st)
+            {
+                results.Columns.Add("h" + (i - 3 - first_st).ToString());
+            }
+            if (i == 4 + first_st + second_st)
+            {
+                results.Columns.Add("V");
+            }
         }
-        for (int i = 0; i < conditions * 2; i++)
+        for (int i = 0; i < iterations; i++)
         {
             DataRow row = results.NewRow();
-            for(int j = 0; j < iterations; j++)
+            for(int j = 0; j < first_st + second_st + 5; j++)
             {
                 row[j] = 0;
             }
             results.Rows.Add(row);
         }
-        for (int n = 0; n < iterations; n++)
-        {
-            double sum = 0;
-            int cur_strat = 1;
-            while (DS.Tables["s" + cur_strat.ToString()] != null)
-            {
-                DataTable s = DS.Tables["s" + cur_strat.ToString()];
-                DataTable d = DS.Tables["d" + cur_strat.ToString()];
 
-                for (int j = 0; j < conditions; j++)
-                {
-                    sum = 0;
-                    for (int i = 0; i < conditions; i++)
-                    {
-                        sum += Convert.ToDouble(s.Rows[j][i]) * Convert.ToDouble(d.Rows[j][i]); //тут мы из состояния j смотрим сумму вероятностей, умноженных на прибыль каждого схода
-                        Console.WriteLine(s.Rows[j][i]);
-                        Console.WriteLine(d.Rows[j][i]);
-                    }
-                    if (n > 0)
-                    {
-                        for (int i = 0; i < conditions; i++)
-                        {
-                            sum += Convert.ToDouble(results.Rows[i][n - 1]) * Convert.ToDouble(s.Rows[j][i]); //добавляем к ожидаемой прибыли максимальные прибыли с прошлых итераций и умножаем их на вероятности текущей стратегии (я час сидел и так и не понял, почему именно так, спасите, XDXDXD, ну сдали и Бог с ним
-                        }
-                    }
-                    if (sum > Convert.ToDouble(results.Rows[j][n]))
-                    {
-                        results.Rows[j][n] = sum;   // если это максимально прибыльный вариант, то вписываем его и номер стратегии
-                        results.Rows[j + conditions][n] = cur_strat;
-                    }
-                }
-                cur_strat++;
+        double min = 10000000;
+        double max = 0;
+
+        for (int i = 0; i < first_st; i++)
+        {
+            results.Rows[0][2 + i] = Convert.ToDouble(DT.Rows[i][0]);
+            if (min > Convert.ToDouble(DT.Rows[i][0]))
+            {
+                min = Convert.ToDouble(DT.Rows[i][0]);
+                results.Rows[0][ik] = i + 1;
             }
+        }
+        for (int j = 0; j < second_st; j++)
+        {
+            results.Rows[0][4 + j + first_st] = Convert.ToDouble(DT.Rows[0][j]);
+            if (max < Convert.ToDouble(DT.Rows[0][j]))
+            {
+                max = Convert.ToDouble(DT.Rows[0][j]);
+                results.Rows[0][jk] = j + 1;
+            }
+        }
+        results.Rows[0][0] = 1;
+        results.Rows[0][M] = min;
+        results.Rows[0][V] = max;
+
+
+        for (int k = 1; k < iterations; k++)
+        {
+            min = 10000000;
+            max = 0;
+            results.Rows[k][0] = k + 1;
+
+            for (int i = 0; i < first_st; i++)
+            {
+                results.Rows[k][2 + i] = Convert.ToDouble(results.Rows[k - 1][2 + i]) + Convert.ToDouble(DT.Rows[i][Convert.ToInt32(results.Rows[k - 1][jk]) - 1]);
+                if (min > Convert.ToDouble(results.Rows[k][2 + i]))
+                {
+                    min = Convert.ToDouble(results.Rows[k][2 + i]);
+                    results.Rows[k][ik] = i + 1;
+                }
+            }
+            for (int j = 0; j < second_st; j++)
+            {
+                results.Rows[k][4 + first_st + j] = Convert.ToDouble(results.Rows[k - 1][4 + first_st + j]) + Convert.ToDouble(DT.Rows[Convert.ToInt32(results.Rows[k - 1][ik]) - 1][j]);
+                if (max < Convert.ToDouble(results.Rows[k][4 + first_st + j]))
+                {
+                    max = Convert.ToDouble(results.Rows[k][4 + first_st + j]);
+                    results.Rows[k][jk] = j + 1;
+                }
+            }
+            results.Rows[k][M] = min / (k + 1);
+            results.Rows[k][V] = max / (k + 1);
         }
         return results;
     }
